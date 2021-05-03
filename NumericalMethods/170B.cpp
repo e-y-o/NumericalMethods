@@ -1,7 +1,7 @@
 #include <iostream>
 #include<math.h>
 
-double bisection(double a, double b, double (*function)(double x), double epsilon) {
+double bisectionMethod(double a, double b, double (*function)(double x), double epsilon) {
 	double fa = function(a);
 	double fb = function(b);
 	double c = 0;
@@ -17,9 +17,25 @@ double bisection(double a, double b, double (*function)(double x), double epsilo
 		return c;
 	}
 	if (fa * fc < 0) {
-		return bisection(a, c, *function, epsilon);
+		return bisectionMethod(a, c, *function, epsilon);
 	}
 	else if (fb * fc < 0) {
-		return bisection(c, b, *function, epsilon);
+		return bisectionMethod(c, b, *function, epsilon);
 	}
+}
+
+double secantMethod(double x, double y, double (*function)(double x), double epsilon) {	
+	double a = x;
+	double b = y;
+	double fa = function(a);
+	double fb = function(b);
+
+	while (abs(fb) > epsilon) {
+		double temp = b;
+		b = (a * fb - b * fa) / (fb - fa);
+		a = temp;
+		fa = fb;
+		fb = function(b);
+	}
+	return b;
 }
