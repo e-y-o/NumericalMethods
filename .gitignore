@@ -341,3 +341,5 @@ healthchecksdb
 
 Tester.cpp
 Tester.h
+CoursePrograms.cpp
+CoursePrograms.h

@@ -17,3 +17,21 @@ double bisectionMethod(double a, double b, double (*function)(double x), double 
  * should be close to 0. This method is not guaranteed to converge.
  */
 double secantMethod(double x0, double x1, double (*function)(double x), double epsilon);
+
+
+/*
+ * Evaluates the divided difference table for the given (x, y) points used in the Newton
+ * polynomial interpolation of the points (x, y).
+ */
+std::vector<double> newtonTable(std::vector<double> x, std::vector<double> y);
+
+/*
+ * Returns the corresponding y-values for the x-coordinates in x_eval in the polynomial
+ * that interpolates the points (x, y). 
+ */
+std::vector<double> evaluateNewton(std::vector<double> x, std::vector<double>y, std::vector<double> x_eval);
+
+/*
+ * Returns a vector of z equidistant points in the range x to y.
+ */
+std::vector<double> linSpace(int x, int y, int z);
